@@ -1,10 +1,9 @@
-# Automating my nginx work using puppet
-
-package { 'nginx';
+# Automate nginx with puppet
+package { 'nginx':
   ensure => installed,
 }
 
-file_line { 'install':
+file_line { 'aaaab':
   ensure => 'present',
   path   => '/etc/nginx/sites-enabled/default',
   after  => 'listen 80 default_server;',
@@ -12,10 +11,10 @@ file_line { 'install':
 }
 
 file { '/var/www/html/index.html':
-  content  => 'Hello World!',
+  content => 'Hello World!',
 }
 
 service { 'nginx':
-  ensure  => running, 
-  require => package['nginx'],
+  ensure  => running,
+  require => Package['nginx'],
 }
