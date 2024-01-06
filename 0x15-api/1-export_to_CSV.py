@@ -21,12 +21,12 @@ if __name__ == '__main__':
         for task in tasks:
             file.write('"{}","{}","{}","{}"\n'
                        .format(employeeId, username, task.get('completed'),
-                               task.get('title')))#!/usr/bin/python3
+                            task.get('title')))
+
+#!/usr/bin/python3
 """A REST API for todo lists of employees"""
-
-import requests
 import sys
-
+import requests
 
 if __name__ == '__main__':
     employeeId = sys.argv[1]
