@@ -39,4 +39,4 @@ backend seunelvis.tech_backend
 EOT
 
 
-sudo service haproxy resta
+sudo service haproxy restart
