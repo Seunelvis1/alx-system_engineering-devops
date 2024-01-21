@@ -1,0 +1,34 @@
+Postmortem: Web Stack Outage on December 15, 2023
+
+Issue Summary:
+
+Duration: December 15, 2023, 14:30 UTC to December 15, 2023, 16:45 UTC
+Impact: Users experienced a complete outage of the e-commerce platform. Approximately 30% of users were affected.
+Root Cause: A database connection issue due to misconfigured firewall rules.
+Timeline:
+
+14:30 UTC: The issue was detected through automated monitoring alerts indicating a spike in error rates on the e-commerce platform.
+14:35 UTC: The operations team was alerted, and initial investigations began.
+14:45 UTC: Assumed root cause was an application code issue, leading to a temporary rollback of the latest deployment.
+15:00 UTC: The rollback did not resolve the issue. Network logs were analyzed, leading to the discovery of a database connection problem.
+15:30 UTC: Misleadingly investigated application server logs for potential DDoS attacks, taking time away from addressing the actual issue.
+15:45 UTC: Issue escalated to the database administration team as the root cause was identified to be related to database connectivity.
+16:00 UTC: Further investigation revealed a misconfiguration in firewall rules preventing the application servers from connecting to the database.
+16:30 UTC: Firewall rules were corrected, and connectivity was restored, resolving the outage.
+16:45 UTC: Full service recovery confirmed, and monitoring stabilized.
+Root Cause and Resolution:
+
+Root Cause: The root cause was a misconfiguration in the firewall rules, which blocked communication between the application servers and the database server.
+Resolution: The misconfigured firewall rules were corrected, allowing the restoration of proper communication and resolving the outage.
+Corrective and Preventative Measures:
+
+Improvements/Fixes:
+Automated Database Connectivity Checks: Implement automated scripts to regularly check and alert on the connectivity between application and database servers.
+Enhanced Monitoring: Enhance monitoring systems to provide more granular insights into network connectivity issues and misconfigurations.
+Documentation Review: Conduct a comprehensive review of network configuration documentation to identify and rectify potential discrepancies.
+Tasks:
+Implement Network ACLs: Apply strict network ACLs to prevent unauthorized access and ensure a more secure network environment.
+Regular Audits: Schedule regular audits of firewall rules and network configurations to catch and rectify misconfigurations proactively.
+Employee Training: Provide additional training to operations teams on effective troubleshooting techniques to minimize the time taken to identify root causes.
+Conclusion:
+The web stack outage on December 15, 2023, was caused by a misconfiguration in firewall rules, resulting in the disruption of database connectivity. The incident highlighted the importance of thorough monitoring, rapid identification of root causes, and the necessity for proactive measures to prevent similar issues in the future. The implemented corrective measures and preventive tasks aim to fortify the system against potential network-related outages and enhance the overall reliability of the web stack.
